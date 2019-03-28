@@ -33,7 +33,8 @@
         };
       }
       sendContact(){
-        this.dispatchEvent(new CustomEvent('senEvent', {detail: valueSon}, bubbles:true, composed:true));
+        this.dispatchEvent(new CustomEvent('sendEvent', {detail: 'send-event', bubbles:true, composed:true}));
+        console.log('hola');
       }
     }
 

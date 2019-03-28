@@ -1,0 +1,42 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-button/paper-button.html ">
+<link rel="import" href="../paper-input/paper-input.html ">
+
+<dom-module id="form-example">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <paper-input label="Nombre" pattern="^[A-z\s]{1,10}" auto-validate value="{{valueSon::input}}"></paper-input>
+    <paper-button raised on-click="sendContact">Enviar</paper-button>
+  </template>
+
+  <script>
+    /**
+     * `form-example`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class FormExample extends Polymer.Element {
+      static get is() { return 'form-example'; }
+      static get properties() {
+        return {
+          valueSon: {
+            type: String,
+            notify:true
+          }
+        };
+      }
+      sendContact(){
+        this.dispatchEvent(new CustomEvent('senEvent', {detail: valueSon}, bubbles:true, composed:true));
+      }
+    }
+
+    window.customElements.define(FormExample.is, FormExample);
+  </script>
+</dom-module>
